@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card" *ngFor="let i of comments">
+      <nb-card-header>Comentarios: {{i.username}} </nb-card-header>
+      <nb-card-body name = "commentBody">
+        <!-- <p *ngIf="comments.length == 0">Sin Comentarios</p> -->
+          <p >{{i.comment}}</p>
+    </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Agregar comentario</nb-card-header>
+      <nb-card-body>
+        <div class="form-inline" >
+          <textarea name="textArea" rows="5" nbInput fullWidth shape="round" [(ngModel)]="coment"  placeholder="Escriba su comentario aqui"></textarea>
+          <button name="addComment" type="submit" nbButton status="primary" (click)="createComent()">Enviar</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+

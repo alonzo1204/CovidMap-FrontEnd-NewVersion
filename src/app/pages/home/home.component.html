@@ -1,0 +1,57 @@
+<div class="form-group">
+  <nb-select placeholder="Seleccionar País" (selectedChange)="showExtraCards($event)" name="idDataCountry"
+    [(ngModel)]="form.idDataCountry" keyboardType="number">
+    <nb-option *ngFor="let dataCountry of dataCountryService.dataCountries" value={{dataCountry.id}}>
+      {{dataCountry.country}}</nb-option>
+  </nb-select>
+
+</div>
+
+<div class="row">
+  <div class="col-xxxl-12">
+    <ngx-bubble-map></ngx-bubble-map>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let statusCard of statusCards">
+    <ngx-status-card [title]="statusCard.title" [detail]="statusCard.detail" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card>
+  </div>
+</div>
+
+<div class="row" *ngIf="!checkCountry">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Total de casos COVID-19 por Continente</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-pie></ngx-echarts-pie>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Top 5 países con más contagios</nb-card-header>
+      <nb-card-body>
+        <ngx-d3-bar></ngx-d3-bar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row" *ngIf="!checkCountry">
+  <div class="col-md-6 offset-md-3">
+    <nb-card>
+      <nb-card-header>Top 6 países con mas muertes </nb-card-header>
+      <nb-card-body>
+        <ngx-d3-advanced-pie></ngx-d3-advanced-pie>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>
+
+<ngx-addComment (greetEvent)="createComment($event)"
+[comments]="CommentService.commentsByIdDataCountry"></ngx-addComment>

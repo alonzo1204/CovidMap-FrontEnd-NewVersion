@@ -1,0 +1,7 @@
+*paginas ocultas
+
+
+pages/e-commerce/profit-card/profit-card.html
+
+*paginas eliminadas
+
